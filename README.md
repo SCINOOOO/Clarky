@@ -65,6 +65,8 @@ DEVELOPER_USER_ID=8284738787538258351
 
 > [NPM AXIOS](https://www.npmjs.com/package/axios) `npm i axios`
 
+> [NPM NODE-FETCH](https://www.npmjs.com/package/node-fetch) `npm i node-fetch`
+
 ### JOIN MY DISCORD IF YOU NEED HELP OR IF YOU WANT TO COLLABORATE.
 
 > [DISCORD](https://www.discord.gg/6TUKHPSgAW)
