@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { loadCommands } from "./loaders/loadCommands.js";
 import { loadHandlers } from "./loaders/loadHandlers.js";
 import { startRotation } from "./utils/botPresence.js";
+import { voiceChatClear } from "./handlers/voiceChatClear.js";
 
 dotenv.config();
 
@@ -55,6 +56,7 @@ client.once("ready", async () => {
   logC(`==================== [ READY ] ====================`);
 });
 
+client.on('voiceStateUpdate', voiceChatClear);
 
 if (!process.env.TOKEN) {
   logE("TOKEN is not defined in your environment.");
