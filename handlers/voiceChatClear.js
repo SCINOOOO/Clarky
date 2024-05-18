@@ -7,10 +7,8 @@ export async function voiceChatClear(oldState, newState) {
   const voiceChannel = oldState.channel || newState.channel;
   if (!voiceChannel) return;
 
-  // Check if the voice channel became empty
   if (oldState.channel && oldState.channel.members.size === 0) {
     try {
-      // If the voice channel has an associated text channel or thread
       const textChannel = voiceChannel.guild.channels.cache.find(
         (channel) => channel.parentId === voiceChannel.id || channel.id === voiceChannel.id
       );
@@ -20,7 +18,6 @@ export async function voiceChatClear(oldState, newState) {
         return;
       }
 
-      // Fetch and delete messages in batches of 100
       let fetched;
       do {
         fetched = await textChannel.messages.fetch({ limit: 100 });

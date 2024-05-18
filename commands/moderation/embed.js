@@ -24,7 +24,6 @@ export const command = {
         const channel = interaction.channel;
 
         try {
-            // Fetch the message by ID
             const message = await channel.messages.fetch(messageId);
 
             if (!message) {
@@ -32,7 +31,6 @@ export const command = {
                 return;
             }
 
-            // Create the embed
             const embed = new EmbedBuilder()
                 .setColor("#5865F2")
                 .setAuthor({ name: message.guild.name, iconURL: message.guild.iconURL() })
@@ -40,10 +38,8 @@ export const command = {
                 .setFooter({ text: "Server informations provided by 🤖 Clarky", iconURL: message.guild.iconURL() })
                 .setTimestamp();
 
-            // Delete the original message
             await message.delete();
 
-            // Send the embed
             await channel.send({ embeds: [embed] });
 
         } catch (error) {
