@@ -7,6 +7,8 @@
 
 > Rotating botPresence (Changing the Bots activity every 30 seconds). Welcome new users in the Bot Presence.
 
+> Delete all chat messages of a voice channel when it gets empty. ** NEW **
+
 
 ⚙️ Commands
 
@@ -17,6 +19,8 @@
 > /sleep (Stops the Bot. Only available for the User set as "DEV_CLIENT_ID" in the .env file.)
 
 > /wiki [INPUT] [SELECT USER TO MENTION] [DE/FI] (Sends an embed message with a short Wikipedia text + URL. (German and Finish can be used aswell, default is english.))
+
+> /embed [MESSAGE_ID] (Resends the selected message in the current channel, but as embed.) ** NEW **
 
 
 📝 .env File Preset
