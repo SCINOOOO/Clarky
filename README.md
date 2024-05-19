@@ -7,8 +7,6 @@
 
 > Rotating botPresence (Changing the Bots activity every 30 seconds). Welcome new users in the Bot Presence.
 
-> Delete all chat messages of a voice channel when it gets empty. ** NEW **
-
 > Temporary Voice Channel System ** NEW ** 
 
 
