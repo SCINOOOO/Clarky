@@ -36,7 +36,6 @@ export const command = {
                 .setAuthor({ name: message.guild.name, iconURL: message.guild.iconURL() })
                 .setDescription(message.content)
                 .setFooter({ text: "Server informations provided by 🤖 Clarky", iconURL: message.guild.iconURL() })
-                .setTimestamp();
 
             await message.delete();
 
