@@ -38,8 +38,9 @@ export const command = {
                 .setFooter({ text: "Server informations provided by 🤖 Clarky", iconURL: message.guild.iconURL() })
 
             await message.delete();
-
+            await interaction.deferReply();
             await channel.send({ embeds: [embed] });
+            await interaction.deleteReply()
 
         } catch (error) {
             logE(`[embed.js] Error embedding message: ${error}`);
