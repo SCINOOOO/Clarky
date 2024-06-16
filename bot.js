@@ -31,13 +31,14 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 client.once("ready", async () => {
   logC(`==================== [ START ] ====================`);
-  if (process.env.UPDATE_COMMANDS_ON_START === 'TRUE') {
-    await updateCommands(client);
-  }
   
   startRotation(client); 
   await loadCommands(client); 
   loadHandlers(client);
+
+  if (process.env.UPDATE_COMMANDS_ON_START === 'TRUE') {
+    await updateCommands(client);
+  }
 
   await delay(1000);
   logS(`${client.user.tag} is logged in on ${client.guilds.cache.size} guild(s):`);
