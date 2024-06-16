@@ -2,26 +2,17 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import wiki from '../commands/misc/wiki.js'
+import steamuser from '../commands/misc/steamuser.js'
+import sleep from '../commands/developer/sleep.js'
+import clear from '../commands/moderation/clear.js'
+import embed from '../commands/moderation/embed.js'
 
-async function loadCommandsRecursive(directory, client) {
-    const files = fs.readdirSync(directory, { withFileTypes: true });
+const cmds = [wiki, steamuser, sleep, clear, embed];
 
-    for (const file of files) {
-        const filePath = path.join(directory, file.name);
-        if (file.isDirectory()) {
-            await loadCommandsRecursive(filePath, client);
-        } else if (file.name.endsWith('.js')) {
-            const fileURL = pathToFileURL(filePath).href;
-            const command = await import(fileURL);
-            client.commands.set(command.command.data.name, command.command); 
-        }
-    }
-}
-
-export async function loadCommands(client) {
+export function loadCommands(client) {
     client.commands = new Map();
-    const commandsPath = path.join(__dirname, '..', 'commands'); 
-    await loadCommandsRecursive(commandsPath, client);
+    for (const cmd of cmds) {
+        client.commands.set(cmd.command.data.name, cmd.command); 
+    }
 }
