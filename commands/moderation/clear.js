@@ -20,7 +20,7 @@ const successEmbed = (description, clientIcon, footerText) =>
     .setDescription(description)
     .setFooter({ text: footerText, iconURL: "https://assets.materialup.com/uploads/0156cdd7-841b-493e-aa15-6ff2692273f7/preview" });
   
-export const command = {
+export default {
   data: new SlashCommandBuilder()
     .setName("clear")
     .setDescription("Clears messages.")

@@ -11,7 +11,7 @@ const wikipediaLogoURLs = {
     fi: "https://fi.wikipedia.org/static/images/project-logos/fiwiki.png"
 };
 
-export const command = {
+export default {
     data: new SlashCommandBuilder()
         .setName('wiki')
         .setDescription('Search something on Wikipedia.')

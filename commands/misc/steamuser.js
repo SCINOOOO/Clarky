@@ -9,7 +9,7 @@ const logW = (message) => console.log(chalk.bold.yellow("[steamuser.JS]"), chalk
 const steamApiKey = process.env.STEAM_APIKEY;
 const footerText = "Steam user informations provided by 🤖 Clarky";
 
-export const command = {
+export default {
   data: new SlashCommandBuilder()
     .setName("steamuser")
     .setDescription("Get information about a Steam user.")

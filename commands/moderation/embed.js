@@ -11,7 +11,7 @@ const errorEmbed = (description) =>
     .setDescription(description)
     .setFooter({ text: footerText, iconURL: footerIconURL });
 
-export const command = {
+export default {
     data: new SlashCommandBuilder()
         .setName('embed')
         .setDescription('Copy the text and formatting of the given message ID, delete the message and resend it as an embed.')

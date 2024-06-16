@@ -7,6 +7,7 @@ import { loadCommands } from "./loaders/loadCommands.js";
 import { loadHandlers } from "./loaders/loadHandlers.js";
 import { startRotation } from "./utils/botPresence.js";
 import { tempVoiceHandler } from './handlers/tempVoiceHandler.js';
+import { updateCommands } from './update-commands.js';
 
 dotenv.config();
 
@@ -30,25 +31,14 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 client.once("ready", async () => {
   logC(`==================== [ START ] ====================`);
+  if (process.env.UPDATE_COMMANDS_ON_START === 'TRUE') {
+    await updateCommands(client);
+  }
+  
   startRotation(client); 
   await loadCommands(client); 
   loadHandlers(client);
 
-  if (process.env.UPDATE_COMMANDS_ON_START === 'TRUE') {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url));
-    const updateCommandsPath = path.join(__dirname, 'update-commands.js');
-    const updateCommandsURL = pathToFileURL(updateCommandsPath).href; 
-    try {
-      logC("Updating commands on start...");
-      await delay(1000);
-      await import(updateCommandsURL);
-      await delay(1000);
-      logS("Successfully updated commands on start.");
-    } catch (error) {
-      logE(`Failed to update commands on start: ${error}`);
-    }
-  }
-  
   await delay(1000);
   logS(`${client.user.tag} is logged in on ${client.guilds.cache.size} guild(s):`);
   await delay(1000);

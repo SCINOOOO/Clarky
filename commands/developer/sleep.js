@@ -25,7 +25,7 @@ const successEmbed = (description) =>
     .setDescription(description)
     .setFooter({ text: footerText, iconURL: footerIconURL });
 
-export const command = {
+export default {
   data: new SlashCommandBuilder()
     .setName("sleep")
     .setDescription("Let the Bot sleep. (Developer only!)"),
